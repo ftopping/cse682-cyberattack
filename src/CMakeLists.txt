@@ -14,5 +14,5 @@ SET_TARGET_PROPERTIES(
 TARGET_LINK_LIBRARIES(
 	CyberAttack
 	PUBLIC
-	replxx-static
+	replxx
 )
