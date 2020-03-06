@@ -1,0 +1,42 @@
+language: cpp
+
+stages:
+- test
+- deploy
+
+matrix:
+  include:
+  - stage: test
+    os: linux
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-8
+    env:
+    - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+
+  - os: osx
+    osx_image: xcode11.3 # OS X 10.14
+    env:
+    - MATRIX_EVAL=""
+
+  - os: windows
+    env:
+    - MATRIX_EVAL=""
+
+before_install:
+- eval "${MATRIX_EVAL}"
+
+script:
+- mkdir build-debug
+- pushd build-debug
+- cmake -DCMAKE_BUILD_TYPE=Debug ..
+- cmake --build .
+- popd
+- mkdir build-release
+- pushd build-release
+- cmake -DCMAKE_BUILD_TYPE=Release ..
+- cmake --build .
+- popd
