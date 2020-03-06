@@ -1,0 +1,3 @@
+[submodule "vendor/replxx"]
+	path = vendor/replxx
+	url = https://github.com/AmokHuginnsson/replxx
