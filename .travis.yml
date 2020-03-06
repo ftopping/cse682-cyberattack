@@ -17,12 +17,14 @@ matrix:
     env:
     - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
 
-  - os: osx
+  - stage: test
+    os: osx
     osx_image: xcode11.3 # OS X 10.14
     env:
     - MATRIX_EVAL=""
 
-  - os: windows
+  - stage: test
+    os: windows
     env:
     - MATRIX_EVAL=""
 
