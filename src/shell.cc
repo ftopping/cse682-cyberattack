@@ -38,7 +38,7 @@ void Shell::main() {
 		try {
 			args = this->parseArgs(input);
 		}
-		catch (std::invalid_argument ex) {
+		catch (const std::invalid_argument & ex) {
 			rx.history_add(input);
 			std::cout << "Shell Error: " << ex.what() << std::endl;
 			continue;
