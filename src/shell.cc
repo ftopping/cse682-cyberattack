@@ -33,13 +33,17 @@ void Shell::main() {
 		}
 		std::string input = cinput;
 
+		// If input was entered, add to the history.
+		if (input.length()) {
+			rx.history_add(input);
+		}
+
 		// Parse arguments.
 		std::vector<std::string> args;
 		try {
 			args = this->parseArgs(input);
 		}
 		catch (const std::invalid_argument & ex) {
-			rx.history_add(input);
 			std::cout << "Shell Error: " << ex.what() << std::endl;
 			continue;
 		}
@@ -48,7 +52,6 @@ void Shell::main() {
 		if (!args.size()) {
 			continue;
 		}
-		rx.history_add(input);
 
 		// Run command if possible.
 		if (!this->runCommand(args)) {
