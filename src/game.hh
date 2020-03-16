@@ -9,8 +9,9 @@ class Game {
 		int startLevel = 0;
 
 		Game();
+		~Game();
 		void main();
 
 	private:
-		std::vector<Level> levels;
+		std::vector<Level *> levels;
 };
