@@ -5,6 +5,7 @@ ADD_EXECUTABLE(
 	level.cc
 	levels/menu.cc
 	levels/menu/commands/level.cc
+	levels/1.cc
 	game.cc
 	main.cc
 )

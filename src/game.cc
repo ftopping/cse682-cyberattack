@@ -1,9 +1,13 @@
+#include <iostream>
+
 #include "game.hh"
 
 #include "levels/menu.hh"
+#include "levels/1.hh"
 
 Game::Game() {
 	levels.push_back(new LevelMenu(this));
+	levels.push_back(new Level1());
 }
 
 Game::~Game() {
@@ -19,7 +23,14 @@ void Game::main() {
 		this->startLevel = 0;
 
 		Level * level = this->levels.at(startLevel);
-		level->main();
+		bool won = level->main();
+
+		if (won) {
+			std::cout << "WON" << std::endl;
+		}
+		else {
+			std::cout << "LOST" << std::endl;
+		}
 	}
 	while (this->startLevel || startLevel);
 }
