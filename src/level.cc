@@ -16,5 +16,5 @@ bool Level::main() {
 
 	delete this->shell;
 
-	return false;
+	return this->won;
 }

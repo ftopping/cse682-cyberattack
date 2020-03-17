@@ -8,6 +8,8 @@
 
 class Level {
 	public:
+		bool won = false;
+
 		Level();
 		virtual ~Level();
 		virtual bool main();
