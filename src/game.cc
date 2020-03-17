@@ -18,8 +18,7 @@ Game::~Game() {
 }
 
 void Game::main() {
-	int startLevel;
-	do {
+	for (int startLevel = -1; this->startLevel || startLevel;) {
 		startLevel = this->startLevel;
 		this->startLevel = 0;
 
@@ -34,5 +33,4 @@ void Game::main() {
 		}
 		std::cout << startLevel << std::endl;
 	}
-	while (this->startLevel || startLevel);
 }
