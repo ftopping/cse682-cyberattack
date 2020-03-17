@@ -12,6 +12,6 @@ class Game {
 		~Game();
 		void main();
 
-	private:
+	protected:
 		std::vector<Level *> levels;
 };

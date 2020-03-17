@@ -1,4 +1,3 @@
-#include <iostream>
 #include "game.hh"
 
 #include "levels/menu.hh"
@@ -8,16 +7,19 @@ Game::Game() {
 }
 
 Game::~Game() {
-	for (Level * level : this->levels) {
+	for (auto level : this->levels) {
 		delete level;
 	}
 	this->levels.clear();
 }
 
 void Game::main() {
-	int startLevel = this->startLevel;
-	this->startLevel = 0;
+	do {
+		int startLevel = this->startLevel;
+		this->startLevel = 0;
 
-	Level * level = this->levels[startLevel];
-	level->main();
+		Level * level = this->levels.at(startLevel);
+		level->main();
+	}
+	while (this->startLevel);
 }

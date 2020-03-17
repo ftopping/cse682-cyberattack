@@ -10,6 +10,17 @@ Shell::Shell(std::string host, std::string welcome) {
 	this->welcome = welcome;
 }
 
+Shell::~Shell() {
+	for (auto command : this->commandMap) {
+		delete command.second;
+	}
+	this->commandMap.clear();
+}
+
+void Shell::addCommand(Command * command) {
+	this->commandMap[command->name] = command;
+}
+
 void Shell::main() {
 	// Print welcome message if one set.
 	if (this->welcome.length()) {
@@ -22,7 +33,7 @@ void Shell::main() {
 	rx.set_max_hint_rows(3);
 
 	std::string prompt = "\x1b[1;32mhacker@" + this->host + "\x1b[0m$ ";
-	for (;;) {
+	while (!this->exit) {
 		char const * cinput = nullptr;
 		do {
 			cinput = rx.input(prompt);
@@ -53,29 +64,59 @@ void Shell::main() {
 			continue;
 		}
 
-		// Run command if possible.
-		if (!this->runCommand(args)) {
+		// If exit command, exit.
+		if (args[0] == "exit" || args[0] == "quit") {
+			break;
+		}
+
+		// If help, list commands.
+		if (args[0] == "help") {
+			this->help();
+			continue;
+		}
+
+		// Get command if possible.
+		Command * command = this->getCommand(args[0]);
+		if (!command) {
 			std::cout <<
 				"Shell Error: Command not found: \"" <<
 				args[0] <<
 				"\"" <<
 				std::endl;
+			continue;
 		}
+
+		// Run command.
+		this->runCommand(command, args);
 	}
 }
 
-bool Shell::runCommand(const std::vector<std::string> & args) {
+void Shell::help() {
+	std::cout << "Available commands:" << std::endl;
+	for (auto entry : this->commandMap) {
+		std::cout << "  " << entry.first << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout <<
+		"You can also type 'help' to show this info or "
+		"'exit' or 'quit' to exit." <<
+		std::endl;
+}
+
+Command * Shell::getCommand(std::string name) {
+	return this->commandMap.count(name) ? this->commandMap[name] : nullptr;
+}
+
+int Shell::runCommand(
+	Command * command,
+	const std::vector<std::string> & args
+) {
+	// Run commands with arguments.
 	auto argsArgv = this->argsArgvView(args);
 	int argc = argsArgv.size();
 	char ** argv = argsArgv.data();
-
-	// TODO: Use to run command.
-	std::cout << "[" << argc << "]:\n";
-	for (int i = 0; i < argc; i++) {
-		std::cout << "  [" << i << "]: " << argv[i] << "\n";
-	}
-
-	return false;
+	command->start();
+	return command->main(argc, argv);
 }
 
 std::string Shell::shellUnquote(std::string quotedString) {

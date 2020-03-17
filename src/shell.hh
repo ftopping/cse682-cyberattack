@@ -2,16 +2,33 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
+#include <stdexcept>
+
+#include "command.hh"
 
 class Shell {
 	public:
-		std::string host;
-		std::string welcome;
+		bool exit = false;
 
 		Shell(std::string host, std::string welcome);
+		~Shell();
+		void addCommand(Command * command);
 		void main();
 
-		bool runCommand(const std::vector<std::string> & args);
+	protected:
+		std::string host;
+		std::string welcome;
+		std::unordered_map<std::string, Command *> commandMap;
+
+		void help();
+
+		Command * getCommand(std::string name);
+
+		int runCommand(
+			Command * command,
+			const std::vector<std::string> & args
+		);
 
 		/**
 		 * Unquote a shell argument.

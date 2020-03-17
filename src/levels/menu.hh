@@ -5,8 +5,11 @@
 
 class LevelMenu: public Level {
 	public:
-		LevelMenu(Game *);
+		int startLevel = 0;
 
-	private:
+		LevelMenu(Game *);
+		void setStartLevel(int level);
+
+	protected:
 		Game * game;
 };

@@ -1,8 +1,10 @@
 ADD_EXECUTABLE(
 	CyberAttack
+	command.cc
 	shell.cc
 	level.cc
 	levels/menu.cc
+	levels/menu/commands/level.cc
 	game.cc
 	main.cc
 )
