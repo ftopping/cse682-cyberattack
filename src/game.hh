@@ -7,6 +7,7 @@
 class Game {
 	public:
 		int startLevel = 0;
+		int finishedLevel = 0;
 
 		Game();
 		~Game();

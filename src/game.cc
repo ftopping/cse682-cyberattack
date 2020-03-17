@@ -6,8 +6,14 @@
 #include "levels/1.hh"
 
 Game::Game() {
-	levels.push_back(new LevelMenu(this));
+	std::vector<Level *> levels;
 	levels.push_back(new Level1());
+
+	this->levels.push_back(new LevelMenu(this, levels.size()));
+	for (auto level : levels) {
+		this->levels.push_back(level);
+	}
+	levels.clear();
 }
 
 Game::~Game() {

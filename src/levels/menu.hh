@@ -7,7 +7,7 @@ class LevelMenu: public Level {
 	public:
 		int startLevel = 0;
 
-		LevelMenu(Game *);
+		LevelMenu(Game *, int levels);
 		void setStartLevel(int level);
 
 	protected:

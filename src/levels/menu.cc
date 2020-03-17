@@ -2,11 +2,14 @@
 
 #include "menu/commands/level.hh"
 
-LevelMenu::LevelMenu(Game * game) {
+LevelMenu::LevelMenu(Game * game, int levels) {
 	this->game = game;
 	this->name = "menu";
 	this->welcome = "TODO: Welcome message.";
-	this->commands.push_back(new LevelMenuCommandLevel(this, 1));
+
+	for (int i = 1; i <= levels; i++) {
+		this->commands.push_back(new LevelMenuCommandLevel(this, i));
+	}
 }
 
 void LevelMenu::setStartLevel(int level) {
