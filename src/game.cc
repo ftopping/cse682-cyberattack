@@ -21,5 +21,5 @@ void Game::main() {
 		Level * level = this->levels.at(startLevel);
 		level->main();
 	}
-	while (this->startLevel);
+	while (this->startLevel || startLevel);
 }
