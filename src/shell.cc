@@ -95,7 +95,7 @@ void Shell::help() {
 	}
 	std::cout << std::endl;
 	std::cout <<
-		"You can also type 'help' to show this info or "
+		"You can also type 'help' to show this info and "
 		"'exit' or 'quit' to exit." <<
 		std::endl;
 }
