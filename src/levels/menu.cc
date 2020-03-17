@@ -12,6 +12,10 @@ LevelMenu::LevelMenu(Game * game, int levels) {
 	}
 }
 
+int LevelMenu::finishedLevel() {
+	return this->game->finishedLevel;
+}
+
 void LevelMenu::setStartLevel(int level) {
 	this->game->startLevel = level;
 	this->shell->exit = true;

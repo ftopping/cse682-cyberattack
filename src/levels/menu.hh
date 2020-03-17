@@ -8,6 +8,7 @@ class LevelMenu: public Level {
 		int startLevel = 0;
 
 		LevelMenu(Game *, int levels);
+		int finishedLevel();
 		void setStartLevel(int level);
 
 	protected:

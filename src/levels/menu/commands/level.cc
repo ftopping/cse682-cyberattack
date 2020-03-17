@@ -15,9 +15,16 @@ int LevelMenuCommandLevel::main(int argc, char ** argv) {
 	(void)argc;
 	(void)argv;
 
+	// Check that this level is unlocked.
+	int nextLevel = this->menu->finishedLevel() + 1;
+	if (this->level > nextLevel) {
+		std::cout <<
+			"ERROR: Finish level " << nextLevel << " first." <<
+			std::endl;
+		return 0;
+	}
+
 	std::cout << "Starting level: " << this->level << std::endl;
-
 	this->menu->setStartLevel(this->level);
-
 	return 0;
 }
