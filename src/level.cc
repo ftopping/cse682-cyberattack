@@ -4,6 +4,10 @@ Level::Level() {
 }
 
 Level::~Level() {
+	for (auto command : this->commands) {
+		delete command;
+	}
+	this->commands.clear();
 }
 
 bool Level::main() {

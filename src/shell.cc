@@ -11,9 +11,6 @@ Shell::Shell(std::string host, std::string welcome) {
 }
 
 Shell::~Shell() {
-	for (auto command : this->commandMap) {
-		delete command.second;
-	}
 	this->commandMap.clear();
 }
 
