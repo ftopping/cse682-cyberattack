@@ -18,8 +18,9 @@ Game::~Game() {
 }
 
 void Game::main() {
+	int startLevel;
 	do {
-		int startLevel = this->startLevel;
+		startLevel = this->startLevel;
 		this->startLevel = 0;
 
 		Level * level = this->levels.at(startLevel);
@@ -31,6 +32,7 @@ void Game::main() {
 		else {
 			std::cout << "LOST" << std::endl;
 		}
+		std::cout << startLevel << std::endl;
 	}
 	while (this->startLevel || startLevel);
 }
