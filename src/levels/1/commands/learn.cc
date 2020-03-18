@@ -17,7 +17,32 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 
 	if (argc <= 1) {
 		std::cout <<
-			"TODO: Learn intro." <<
+			"In order to beat the challenge, you will need to win a " <<
+			"guessing game." <<
+			std::endl <<
+			"You and the challenge will each select a number and if your" <<
+			std::endl <<
+			"number wins the comparison you pass." <<
+			std::endl <<
+			std::endl <<
+			"Sound easy? Here's the problem: The challenge cheats." <<
+			std::endl <<
+			"It picks an equation and number which cannot be beat..." <<
+			std::endl <<
+			"Or can it?" <<
+			std::endl <<
+			std::endl <<
+			"In order to pass, you will have to be smarter." <<
+			std::endl <<
+			"See if you can find input to fool the game and beat the system." <<
+			std::endl <<
+			std::endl <<
+			"Let's practice on the following equation:" <<
+			std::endl <<
+			"  " << equation <<
+			std::endl <<
+			std::endl <<
+			"Type 'learn 4' to try the number 4." <<
 			std::endl;
 		return 0;
 	}
@@ -33,7 +58,7 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 	}
 	if (!dec) {
 		std::cout <<
-			"FAIL: Argument can only contain charaters: 0123456789" <<
+			"FAIL: Input can only contain charaters: 0123456789" <<
 			std::endl <<
 			std::endl <<
 			"Good idea, but the input is filtered." <<
@@ -87,6 +112,8 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 		std::cout <<
 			"FAIL: My number divided by your number is lower than my number." <<
 			std::endl <<
+			std::endl <<
+			"Try again with a different number." <<
 			std::endl <<
 			"HINT: Your input is parsed as an IEEE-754 float." <<
 			std::endl;

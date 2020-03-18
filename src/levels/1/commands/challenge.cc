@@ -34,7 +34,7 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 	}
 	if (!dec) {
 		std::cout <<
-			"FAIL: Argument can only contain charaters: 0123456789" <<
+			"FAIL: Input can only contain charaters: 0123456789" <<
 			std::endl <<
 			std::endl <<
 			"Nice try, but I planned for that." <<
