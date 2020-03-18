@@ -13,6 +13,8 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 	(void)argc;
 	(void)argv;
 
+	std::string equation = "yourNumber < myNumber";
+
 	if (argc <= 1) {
 		std::cout <<
 			"TODO: Introduction." <<
@@ -39,34 +41,44 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 		return 0;
 	}
 
-	float yourNumber;
-	sscanf(num, "%f", &yourNumber);
+	// Parse integer, can overflow, by design.
+	int32_t yourNumber;
+	sscanf(num, "%d", &yourNumber);
 
-	float myNumber = 42;
+	int32_t myNumber = 0;
 	std::cout << "My number: " << myNumber << std::endl;
 	std::cout << "Your number: " << yourNumber << std::endl;
 
-	float divided = myNumber / yourNumber;
-	std::cout << "My number divided by your number: " << divided << std::endl;
-	std::cout << std::endl;
+	bool result = yourNumber < myNumber;
 
-	if (divided > myNumber) {
+	std::cout <<
+		"Equation:" <<
+		std::endl <<
+		"  " << equation << " =" <<
+		std::endl <<
+		"  " << yourNumber << " < " << myNumber << " =" <<
+		std::endl <<
+		"  " << (result ? "true" : "false") <<
+		std::endl <<
+		std::endl;
+
+	if (result) {
 		std::cout <<
 			"PASS: Your number IS highed!" <<
 			std::endl <<
+			"  Curses, how did you beat me? I'll get you on the next level!" <<
 			std::endl <<
-			"Curses, how did you beat me? I'll get you on the next level!" <<
 			std::endl <<
+			"Congratulations on passing the challenge!" <<
 			std::endl <<
-			"Congratulations on passing the challenge! "
-			"Type exit to return to the menu and start the next level." <<
+			"  Type exit to return to the menu and start the next level." <<
 			std::endl;
 
 		// TODO: Mark level as won...
 	}
 	else {
 		std::cout <<
-			"FAIL: Nice try, but your number is lower." <<
+			"FAIL: Nice try, but your number is NOT lower than my number." <<
 			std::endl;
 	}
 

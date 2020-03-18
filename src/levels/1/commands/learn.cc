@@ -13,6 +13,8 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 	(void)argc;
 	(void)argv;
 
+	std::string equation = "(myNumber / yourNumber) > myNumber";
+
 	if (argc <= 1) {
 		std::cout <<
 			"TODO: Introduction." <<
@@ -39,32 +41,51 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 		return 0;
 	}
 
-	// Parse integer, can overflow, by design.
-	int32_t yourNumber;
-	sscanf(num, "%d", &yourNumber);
+	float yourNumber;
+	sscanf(num, "%f", &yourNumber);
 
-	int32_t myNumber = 0;
+	float myNumber = 3.14;
 	std::cout << "My number: " << myNumber << std::endl;
 	std::cout << "Your number: " << yourNumber << std::endl;
-	std::cout << std::endl;
 
-	// Check for which value is smaller.
-	if (yourNumber < myNumber) {
+	// Divide by the input, which could be 0, by design.
+	float divided = myNumber / yourNumber;
+	bool result = divided > myNumber;
+
+	std::cout <<
+		"Equation:" <<
+		std::endl <<
+		"  " << equation << " =" <<
+		std::endl <<
+		"  (" << myNumber << " / " << yourNumber << ") > " <<
+		myNumber << " =" <<
+		std::endl <<
+		"  " << divided << " > " << myNumber << " =" <<
+		std::endl <<
+		"  " << (result ? "true" : "false") <<
+		std::endl <<
+		std::endl;
+
+	if (result) {
 		std::cout <<
-			"PASS: Your number IS lower!" <<
+			"PASS: My number divided by your number IS higher!" <<
+			std::endl <<
+			"  An IEEE-754 dividing a float by 0 results in infinity." <<
 			std::endl <<
 			std::endl <<
 			"You passed the learning stage, and unlocked a hint:" <<
 			std::endl <<
-			"  The challenge parses your input as a IEEE-754 float." <<
+			"  The challenge reads your input as an unsigned 32-bit integer." <<
+			std::endl <<
+			"  Is there a way to flip that negative without a minus sign?" <<
 			std::endl;
 	}
 	else {
 		std::cout <<
-			"FAIL: Your number IS NOT lower than my number." <<
+			"FAIL: My number divided by your number is lower than my number." <<
 			std::endl <<
 			std::endl <<
-			"HINT: Your input is parsed as a 32-bit integer." <<
+			"HINT: Your input is parsed as an IEEE-754 float." <<
 			std::endl;
 	}
 
