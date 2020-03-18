@@ -18,7 +18,21 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 
 	if (argc <= 1) {
 		std::cout <<
-			"TODO: Challenge intro." <<
+			"Welcome to my guessing game!" <<
+			std::endl <<
+			std::endl <<
+			"The rules are simple: " <<
+			std::endl <<
+			"We each pick a number, if your number is lower than mine,"
+			" you pass!" <<
+			std::endl <<
+			std::endl <<
+			"This is the equation we will be playing with:" <<
+			std::endl <<
+			"  " << equation <<
+			std::endl <<
+			std::endl <<
+			"When you are ready, enter 'challenge 2' to guess 2 for example." <<
 			std::endl;
 		return 0;
 	}
@@ -72,7 +86,7 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 			std::endl <<
 			"Congratulations on passing the challenge!" <<
 			std::endl <<
-			"  Type exit to return to the menu and start the next level." <<
+			"  Enter 'exit' to return to the menu and start the next level." <<
 			std::endl;
 
 		// Mark level as won.
@@ -81,6 +95,9 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 	else {
 		std::cout <<
 			"FAIL: Nice try, but your number is NOT lower than my number." <<
+			std::endl <<
+			std::endl <<
+			"Maybe you should just give up?" <<
 			std::endl;
 	}
 

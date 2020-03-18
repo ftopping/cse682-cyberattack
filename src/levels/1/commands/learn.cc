@@ -42,7 +42,7 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 			"  " << equation <<
 			std::endl <<
 			std::endl <<
-			"Type 'learn 4' to try the number 4." <<
+			"Enter 'learn 4' to try the number 4." <<
 			std::endl;
 		return 0;
 	}
@@ -105,7 +105,7 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 			"  Is there a way to flip that negative without a minus sign?" <<
 			std::endl <<
 			std::endl <<
-			"Type 'challenge' to start the challenge." <<
+			"Enter 'challenge' to start the challenge." <<
 			std::endl;
 	}
 	else {

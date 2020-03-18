@@ -33,7 +33,8 @@ std::string LevelMenu::welcome() {
 		std::string l = std::to_string(game->finishedLevel + 1);
 		std::string c = game->finishedLevel ? "continue" : "start";
 		welcome +=
-			"Type 'level" + l + "' to " + c + " your adventure and level up...";
+			"Enter 'level" + l + "' to " + c +
+			" your adventure and level up...";
 	}
 	else {
 		welcome +=

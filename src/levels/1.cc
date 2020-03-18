@@ -14,5 +14,5 @@ std::string Level1::welcome() {
 	return
 		"Welcome to the first level of CyberAttack!\n"
 		"\n"
-		"Type the 'learn' command to begin.";
+		"Enter the 'learn' command to begin.";
 }
