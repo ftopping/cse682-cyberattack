@@ -10,8 +10,12 @@ Level::~Level() {
 	this->commands.clear();
 }
 
+std::string Level::welcome() {
+	return "";
+}
+
 bool Level::main() {
-	this->shell = new Shell(this->name, this->welcome);
+	this->shell = new Shell(this->name, this->welcome());
 
 	for (auto command : this->commands) {
 		this->shell->addCommand(command);

@@ -18,7 +18,7 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 
 	if (argc <= 1) {
 		std::cout <<
-			"TODO: Introduction." <<
+			"TODO: Challenge intro." <<
 			std::endl;
 		return 0;
 	}

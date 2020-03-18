@@ -5,8 +5,11 @@
 
 Level1::Level1() {
 	this->name = "level1";
-	this->welcome = "TODO: Welcome message.";
 
 	this->commands.push_back(new Level1CommandLearn());
 	this->commands.push_back(new Level1CommandChallenge(this));
+}
+
+std::string Level1::welcome() {
+	return "TODO: Welcome message.";
 }

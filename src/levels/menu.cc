@@ -5,9 +5,16 @@
 LevelMenu::LevelMenu(Game * game, int levels) {
 	this->game = game;
 	this->name = "menu";
+	this->levels = levels;
 
-	std::string levelS = std::to_string(game->finishedLevel);
-	this->welcome =
+	for (int i = 1; i <= levels; i++) {
+		this->commands.push_back(new LevelMenuCommandLevel(this, i));
+	}
+}
+
+std::string LevelMenu::welcome() {
+	std::string levelS = std::to_string(this->game->finishedLevel);
+	std::string welcome =
 		"Welcome to...\n\n"
 "   _____      _                     _   _             _     \n"
 "  / ____|    | |               /\\  | | | |           | |    \n"
@@ -18,20 +25,22 @@ LevelMenu::LevelMenu(Game * game, int levels) {
 "         __/ |                                              \n"
 "        |___/                                               \n"
 		"\n"
-		"You are currently a level " + levelS + " hacker.";
+		"You are currently a level " + levelS + " hacker."
+		"\n"
+		"\n";
 
-	for (int i = 1; i <= levels; i++) {
-		this->commands.push_back(new LevelMenuCommandLevel(this, i));
-	}
-
-	if (game->finishedLevel < levels) {
+	if (game->finishedLevel < this->levels) {
 		std::string l = std::to_string(game->finishedLevel + 1);
 		std::string c = game->finishedLevel ? "continue" : "start";
-		this->welcome +=
-			"\n"
-			"\n"
+		welcome +=
 			"Type 'level" + l + "' to " + c + " your adventure and level up...";
 	}
+	else {
+		welcome +=
+			"Thanks for playing this demo of CyberAttack!\n"
+			"You have successfully passed all the levels currently available.";
+	}
+	return welcome;
 }
 
 int LevelMenu::finishedLevel() {

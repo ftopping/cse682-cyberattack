@@ -12,11 +12,11 @@ class Level {
 
 		Level();
 		virtual ~Level();
+		virtual std::string welcome();
 		virtual bool main();
 
 	protected:
 		std::string name;
-		std::string welcome;
 		std::vector<Command *> commands;
 		Shell * shell = nullptr;
 };

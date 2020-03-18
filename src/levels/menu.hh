@@ -8,9 +8,11 @@ class LevelMenu: public Level {
 		int startLevel = 0;
 
 		LevelMenu(Game *, int levels);
+		std::string welcome();
 		int finishedLevel();
 		void setStartLevel(int level);
 
 	protected:
 		Game * game;
+		int levels;
 };

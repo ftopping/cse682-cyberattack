@@ -17,7 +17,7 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 
 	if (argc <= 1) {
 		std::cout <<
-			"TODO: Introduction." <<
+			"TODO: Learn intro." <<
 			std::endl;
 		return 0;
 	}
