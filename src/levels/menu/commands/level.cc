@@ -24,7 +24,6 @@ int LevelMenuCommandLevel::main(int argc, char ** argv) {
 		return 0;
 	}
 
-	std::cout << "Starting level: " << this->level << std::endl;
 	this->menu->setStartLevel(this->level);
 	return 0;
 }

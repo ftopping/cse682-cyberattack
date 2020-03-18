@@ -11,5 +11,8 @@ Level1::Level1() {
 }
 
 std::string Level1::welcome() {
-	return "TODO: Welcome message.";
+	return
+		"Welcome to the first level of CyberAttack!\n"
+		"\n"
+		"Type the 'learn' command to begin.";
 }

@@ -78,6 +78,9 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 			"  The challenge reads your input as an unsigned 32-bit integer." <<
 			std::endl <<
 			"  Is there a way to flip that negative without a minus sign?" <<
+			std::endl <<
+			std::endl <<
+			"Type 'challenge' to start the challenge." <<
 			std::endl;
 	}
 	else {
