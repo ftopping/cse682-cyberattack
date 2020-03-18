@@ -2,8 +2,9 @@
 
 #include <iostream>
 
-Level1CommandChallenge::Level1CommandChallenge() {
+Level1CommandChallenge::Level1CommandChallenge(Level1 * level) {
 	this->name = "challenge";
+	this->level = level;
 }
 
 Level1CommandChallenge::~Level1CommandChallenge() {
@@ -74,7 +75,8 @@ int Level1CommandChallenge::main(int argc, char ** argv) {
 			"  Type exit to return to the menu and start the next level." <<
 			std::endl;
 
-		// TODO: Mark level as won...
+		// Mark level as won.
+		this->level->won = true;
 	}
 	else {
 		std::cout <<

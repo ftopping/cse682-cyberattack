@@ -8,5 +8,5 @@ Level1::Level1() {
 	this->welcome = "TODO: Welcome message.";
 
 	this->commands.push_back(new Level1CommandLearn());
-	this->commands.push_back(new Level1CommandChallenge());
+	this->commands.push_back(new Level1CommandChallenge(this));
 }
