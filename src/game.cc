@@ -32,8 +32,8 @@ void Game::main() {
 		bool won = level->main();
 
 		// Maybe update finished levels.
-		if (won && level > this->finishedLevel) {
-			this->finishedLevel = level;
+		if (won && startLevel > this->finishedLevel) {
+			this->finishedLevel = startLevel;
 		}
 	}
 }
