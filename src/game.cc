@@ -31,12 +31,9 @@ void Game::main() {
 		Level * level = this->levels.at(startLevel);
 		bool won = level->main();
 
-		if (won) {
-			std::cout << "WON" << std::endl;
+		// Maybe update finished levels.
+		if (won && level > this->finishedLevel) {
+			this->finishedLevel = level;
 		}
-		else {
-			std::cout << "LOST" << std::endl;
-		}
-		std::cout << startLevel << std::endl;
 	}
 }
