@@ -5,6 +5,15 @@
 
 class Level1: public Level {
 	public:
+		/**
+		 * Constructor.
+		 */
 		Level1();
-		std::string welcome();
+
+		/**
+		 * Get welcome text for the shell.
+		 *
+		 * @returns Welcome text.
+		 */
+		virtual std::string welcome();
 };
