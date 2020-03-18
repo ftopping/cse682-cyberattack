@@ -97,6 +97,8 @@ int Level1CommandLearn::main(int argc, char ** argv) {
 			std::endl <<
 			"  An IEEE-754 dividing a float by 0 results in infinity." <<
 			std::endl <<
+			"  This is one way unexpected input can cause unexpected output." <<
+			std::endl <<
 			std::endl <<
 			"You passed the learning stage, and unlocked a hint:" <<
 			std::endl <<
