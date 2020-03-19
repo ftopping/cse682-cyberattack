@@ -1,3 +1,8 @@
+#include <iostream>
+#include <fstream>
+#include <windows.h>
+#include <shlobj.h>
+
 #include "menu.hh"
 
 #include "menu/commands/level.hh"
@@ -45,6 +50,25 @@ std::string LevelMenu::welcome() {
 }
 
 int LevelMenu::finishedLevel() {
+	// Block which collects the current filepath and appends our saveFile to the end.
+    // Requires windows.h & shlobj.h
+    CHAR my_documents[MAX_PATH];
+    HRESULT result = SHGetFolderPathA(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, my_documents);
+    std::string filepath; 
+    filepath += my_documents;
+    filepath += "\\saveFile.txt";
+	
+	// Create a temp variable to add 1 so the game starts at the next level once 
+	// it restarts.
+	int level = this->game->finishedLevel + 1;
+	
+	// Writes the temp variable to file. If file exists it is overwritten.
+	// Requires fstream
+	std::ofstream saveFile;
+    saveFile.open(filepath);
+    saveFile << level;
+    saveFile.close();
+	
 	return this->game->finishedLevel;
 }
 
